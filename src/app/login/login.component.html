@@ -1,0 +1,23 @@
+<div class="container">
+<div class="row justify-content-md-center  d-flex">
+    <div class="col-6">
+        <form #f="ngForm" id="loginForm" (submit)="onSubmit(f)">
+            <div class="form-group">
+                <label for="email"></label>
+                <input ngModel type="text" class="form-control" name="email" id="email" required email>
+                <small *ngIf="!f?.controls?.email?.valid">email no valido</small>
+
+                <label for="password"></label>
+                <input ngModel #password="ngModel" type="password" class="form-control" name="password" id="password" required>
+                <small *ngIf="!password.valid">password no valido</small>
+
+
+                <button type="submit" class="btn btn-primary" [disabled] = "!f.valid">Acceder</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+
+
