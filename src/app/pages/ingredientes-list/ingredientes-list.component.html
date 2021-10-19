@@ -1,0 +1,34 @@
+<app-ingredientes-form
+  (nuevoIngrediente) = "OnNuevoIngrediente($event)"
+  [ingredient] = "ingrendientToEdit"
+></app-ingredientes-form>
+<br>
+
+<p>Lista de ingredientes</p>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ingredient of ingredients">
+        <th scope="row">{{ingredient.idIngrediente}}</th>
+        <td>{{ingredient.name}}</td>
+        <td>{{ingredient.cantidad}}</td>
+        <td>
+          <button class="btn btn-primary" (click) = "onEdit(ingredient)">
+          <img src="../../../assets/images/edit.png" style="width: 20px;"/>
+          </button>
+          
+          <button class="btn btn-danger" (click) = "onDelete(ingredient)">
+            <img src="../../../assets/images/delete.png" style="width: 20px;"/>
+          </button>
+        
+        </td>
+      </tr>
+    </tbody>
+  </table>

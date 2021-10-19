@@ -1,0 +1,19 @@
+{
+    "ingredientes": [
+        {
+            "idIngrediente": 1,
+            "name": "tomate",
+            "cantidad": 10
+        },
+        {
+            "idIngrediente": 2,
+            "name": "salchichon",
+            "cantidad": 8
+        },
+        {
+            "idIngrediente": 3,
+            "name": "queso",
+            "cantidad": 12
+        }
+    ]
+}

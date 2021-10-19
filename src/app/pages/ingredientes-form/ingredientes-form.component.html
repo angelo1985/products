@@ -1,0 +1,21 @@
+<p>Formulario de Ingredientes</p>
+<form #fIngredients="ngForm" id="ingredientsForm" (submit)="onSubmit(fIngredients)">
+    <div class="form-group">
+        <label for="idIngrediente">Id</label>
+        <input ngModel #idIngrediente="ngModel" type="number" class="form-control" name="idIngrediente" id="idIngrediente" required>
+        <small class="text-danger" *ngIf="!idIngrediente.valid && idIngrediente.touched">El idIngrediente es requerida</small>
+
+        <label for="name">Nombre</label>
+        <input ngModel type="text" class="form-control" name="name" id="name" required>
+        <small class="text-danger"
+            *ngIf="!fIngredients?.controls?.name?.valid && fIngredients?.controls?.name?.touched">Nombre es
+            requerido</small>
+
+        <label for="cantidad">Cantidad</label>
+        <input ngModel #cantidad="ngModel" type="number" class="form-control" name="cantidad" id="cantidad" required>
+        <small class="text-danger" *ngIf="!cantidad.valid && cantidad.touched">La cantidad es requerida</small>
+
+        <button type="submit" class="btn btn-primary w-100 mt-3" [disabled]="!fIngredients.valid"
+        >Agregar</button>
+    </div>
+</form>
