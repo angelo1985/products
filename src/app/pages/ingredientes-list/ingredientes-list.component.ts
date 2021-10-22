@@ -32,10 +32,30 @@ export class IngredientesListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  OnEditarIngrediente(editIngrediente: Ingrediente ){
+   const indexToEdit = this.ingredients.findIndex((x) => x.idIngrediente === editIngrediente.idIngrediente);
+    if(indexToEdit !== -1){
+      
+      this.ingredients[indexToEdit] = editIngrediente;
+    } 
+  }
+
+
   OnNuevoIngrediente(nuevoIngrediente: Ingrediente ){
-    const indexToAdd = this.ingredients.length + 1;
-    nuevoIngrediente = {...nuevoIngrediente, idIngrediente: indexToAdd};
-    this.ingredients.push(nuevoIngrediente);
+    /* const indexToAdd = this.ingredients.length + 1;
+    nuevoIngrediente = {...nuevoIngrediente, idIngrediente: indexToAdd}; */
+    let x = {a: 1, b: 2};
+    let y = {c: 3};
+    let z = {...x, ...y, miVar: 10};
+    console.log(z);
+    
+    // Z es la fusión de X y Y, y una campo adicional llamado miVar con el valor de 10
+    const indexToAdd = this.ingredients.findIndex((x) => x.idIngrediente === nuevoIngrediente.idIngrediente);
+    if(indexToAdd === -1){
+      this.ingredients.push(nuevoIngrediente);
+    } else {
+      alert(`El Id ${nuevoIngrediente.idIngrediente} YA existe`);
+    }
   }
 
   onEdit(ingrediente: Ingrediente){

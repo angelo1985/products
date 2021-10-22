@@ -14,17 +14,36 @@ export class IngredientesFormComponent implements OnInit, OnChanges {
   @ViewChild('fIngredients') myForm?: NgForm;
 
   @Output() nuevoIngrediente = new EventEmitter<Ingrediente>();
+  @Output() edicionIngrediente = new EventEmitter<Ingrediente>();
 
   @Input('ingredient') ingrendientToEdit: Ingrediente;
+
+  public edit = false;
 
   constructor() { }
 
   ngOnChanges(change: SimpleChanges){
-    this.myForm?.setValue(change.ingrendientToEdit.currentValue)
+    this.myForm?.setValue(change.ingrendientToEdit.currentValue);
+
+    if (change.ingrendientToEdit.currentValue){
+      this.edit = true;
+    }else {
+      this.edit = false;
+    }
+
+  }
+
+  onClose(){
+    this.myForm?.resetForm();
+    this.edit = false;
   }
 
   onSubmit(f: NgForm): void{
-    this.nuevoIngrediente.emit(f.form.value);
+    if(this.edit){
+      this.edicionIngrediente.emit(f.form.value);
+    }else {
+      this.nuevoIngrediente.emit(f.form.value);
+    }
     f.resetForm();
   }
 
